@@ -1,0 +1,123 @@
+.container {
+  margin: 1em;
+  padding: 2em 1em;
+  background: #fafafa;
+  font-family: "SF Pro Display";
+  font-size: 0.6vw;
+}
+
+.logo {
+  margin-bottom: 0;
+  background-color: #000;
+  color: #fff;
+  padding: 1em;
+}
+
+.userNav {
+  float: right;
+}
+
+.nav {
+  font-weight: 600;
+  display: flex;
+  list-style: none;
+  margin: 0 0 2em 0;
+  padding: 0;
+
+  @nest & li {
+    margin-right: 1em;
+  }
+
+  @nest & a {
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: none;
+    transition: all 500ms ease-in-out;
+  }
+
+  @nest & a:hover {
+    border-bottom: 1px solid #000;
+  }
+}
+
+.hero {
+  display: flex;
+}
+
+.photo {
+  width: 60%;
+}
+
+.photo img {
+  width: 100%;
+}
+
+.info {
+  max-width: 40%;
+  padding: 0 0 0 1em;
+
+  @nest & h1 {
+    /* background-image: url(https://media.giphy.com/media/fnJWA6rIGgYmlksSEN/giphy.gif); */
+    /* background-clip: text; */
+    /* color: transparent; */
+    font-weight: 800;
+    background-position: center;
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+  }
+  p {
+  }
+}
+
+.price {
+  font-size: 2em;
+  margin-top: 0.4em;
+}
+
+.buy {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.quantity {
+  margin-left: 0.5em;
+  color: #888;
+  border: 0px;
+}
+
+.quantity:hover {
+  background: #000;
+  color: white;
+  border: 0px;
+}
+
+.buyButton {
+  font-weight: 900;
+  display: block;
+  font-size: 1.5em;
+  margin: 0.5em 0.5em 0.5em 0;
+  background: #fb4438;
+  border: 0px solid #083549;
+  color: white;
+  padding: 0.5em 0;
+  min-width: 100%;
+}
+
+.tags {
+  font-family: "SF Mono";
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag:first-of-type {
+  padding-right: 0.5em;
+}
+.tag + .tag {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 0.5em;
+}

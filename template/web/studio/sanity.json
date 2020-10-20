@@ -1,0 +1,40 @@
+{
+  "root": true,
+  "api": {
+    "projectId": "jmhf2rn8",
+    "dataset": "nextjs-ecommerce"
+  },
+  "project": {
+    "name": "review-changes-launch-demo",
+    "basePath": "studio"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "barcode-input",
+    "@sanity/color-input",
+    "asset-source-unsplash",
+    "pulp-inc",
+    "google-maps-input"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/desk-tool/structure",
+      "path": "./src/deskStructure"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@sanity/google-maps-input",
+  "version": "1.150.1",
+  "description": "Sanity plugin providing input handlers for geo-related input types using Google Maps",
+  "main": "lib/index.js",
+  "author": "Sanity.io <hello@sanity.io>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf lib",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "sanity",
+    "cms",
+    "headless",
+    "realtime",
+    "content",
+    "google-maps-input",
+    "sanity-plugin"
+  ],
+  "dependencies": {
+    "@sanity/field": "1.150.7",
+    "@sanity/react-hooks": "1.150.8",
+    "@sanity/types": "1.150.7",
+    "classnames": "^2.2.5",
+    "rxjs": "^6.5.3"
+  },
+  "devDependencies": {
+    "@sanity/base": "1.150.8",
+    "@sanity/components": "1.150.8",
+    "@types/googlemaps": "^3.39.11",
+    "lodash": "^4.17.15",
+    "rimraf": "^2.7.1"
+  },
+  "peerDependencies": {
+    "@sanity/base": "^1.150.0",
+    "@sanity/components": "^1.150.0",
+    "react": "^16.9",
+    "react-dom": "^16.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanity-io/sanity.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity/issues"
+  },
+  "homepage": "https://www.sanity.io/"
+}
