@@ -6,7 +6,7 @@
   },
   "project": {
     "name": "review-changes-launch-demo",
-    "basePath": "studio"
+    "_basePath": "studio"
   },
   "plugins": [
     "@sanity/base",
