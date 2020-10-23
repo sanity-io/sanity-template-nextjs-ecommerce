@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "description": "",
   "main": "package.json",
-  "author": "Bjørge Næss <bjoerge@sanity.io>",
-  "license": "UNLICENSED",
+  "author": "Knut Melvær <knut@sanity.io>",
+  "license": "MIT",
   "scripts": {
     "start": "sanity start",
     "test": "sanity check"
