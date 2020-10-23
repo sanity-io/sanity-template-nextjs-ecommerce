@@ -8,7 +8,7 @@ export default function ProductsOverviewPreview(props) {
       {...props}
       previewURL={
         process.env.NODE_ENV === 'production'
-          ? `${process.env.VERCEL_URL}/${displayed?.slug?.current}`
+          ? `https://sanity-template-nextjs-ecommerce.sanity-io.vercel.app/products`
           : `http://localhost:3000/products/`
       }
     />
