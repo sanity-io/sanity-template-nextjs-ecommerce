@@ -1,0 +1,20 @@
+{
+  "name": "sanity-template-nextjs-ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanity-io/sanity-template-nextjs-ecommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanity-io/sanity-template-nextjs-ecommerce/issues"
+  },
+  "homepage": "https://github.com/sanity-io/sanity-template-nextjs-ecommerce#readme"
+}

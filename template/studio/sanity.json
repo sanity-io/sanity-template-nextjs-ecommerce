@@ -14,11 +14,7 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "barcode-input",
-    "@sanity/color-input",
-    "asset-source-unsplash",
-    "pulp-inc",
-    "google-maps-input"
+    "@sanity/color-input"
   ],
   "env": {
     "development": {
