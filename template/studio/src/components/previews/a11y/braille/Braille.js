@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 // remember to install this dependency if you use this in your own project
-import br from 'braille'
+import br from 'template/studio/src/components/previews/a11y/braille/Braille'
 import DefaultSelect from 'part:@sanity/components/selects/default'
 
 import styles from './Braille.css'
