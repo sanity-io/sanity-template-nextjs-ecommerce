@@ -8,7 +8,8 @@ import siteSettings from './siteSettings'
 
 import TotebagPreview from '../components/previews/banners/swag/TotebagPreview'
 import ShirtPreview from '../components/previews/banners/swag/ShirtPreview'
-import ProductPreview from '../components/previews/product/ProductPreview'
+import ProductPagePreview from '../components/previews/product/ProductPagePreview'
+import ProductsOverviewPreview from '../components/previews/product/ProductsOverviewPreview'
 // Hide document types that we already have a structure definition for
 const hiddenDocTypes = listItem =>
   ![
@@ -66,7 +67,8 @@ export const getDefaultDocumentNode = (props) => {
     return S.document()
     .views([
       S.view.form(),
-      S.view.component(ProductPreview).title('Web'),
+      S.view.component(ProductsOverviewPreview).title('Products Overview'),
+      S.view.component(ProductPagePreview).title('Product Page'),
     ])
   }
   if (schemaType === "swag") {

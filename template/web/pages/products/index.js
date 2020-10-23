@@ -1,14 +1,17 @@
 import Error from 'next/error'
 import ProductsPage from '../../components/ProductsPage'
-import { client } from '../../utils/client'
+import {getClient, usePreviewSubscription} from '../../utils/sanity'
 
 const query = `//groq
   *[_type == "product" && defined(slug.current)]
 `
 
 function ProductsPageContainer(props) {
-  const { productsData, errorCode } = props
-  if (errorCode) {
+  const {data: productsData} = usePreviewSubscription(query, {
+    initialData: props?.productsData,
+    enabled: true
+  })
+  if (props?.errorCode) {
     return <Error statusCode={errorCode} />
   }
   return (
@@ -16,18 +19,8 @@ function ProductsPageContainer(props) {
   )
 }
 
-export async function getStaticPaths() {
-  const products = await client.fetch(`*[_type == "product" && defined(slug.current)]{
-    "params": {"slug": slug.current}
-  }`)
-  return {
-    paths: products,
-    fallback: true
-  }
-}
-
-export async function getStaticProps() {
-  const productsData = await client.fetch(query)
+export async function getStaticProps({preview}) {
+  const productsData = await getClient(preview).fetch(query)
 
   return {
     props: { productsData, errorCode: !productsData && 404 } // will be passed to the page component as props

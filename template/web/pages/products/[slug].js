@@ -1,19 +1,24 @@
 import Error from 'next/error'
 import ProductPage from '../../components/ProductPage'
-import { client } from '../../utils/client'
+import {groq} from 'next-sanity'
+import {getClient, usePreviewSubscription} from '../../utils/sanity'
 
-const query = `//groq
-  *[_type == "product" && slug.current == $slug][0]
-`
+
+const query = groq`*[_type == "product" && slug.current == $slug][0]`
 
 function ProductPageContainer(props) {
-  const { productData, errorCode } = props
-  if (errorCode) {
+  const {data: productData} = usePreviewSubscription(query, {
+    params: {slug: props?.productData?.slug?.current},
+    initialData: props?.productData,
+    enabled: true
+  })
+  if (props?.errorCode) {
     return <Error statusCode={errorCode} />
   }
   const {
     _id,
     title,
+    defaultProductVariant,
     mainImage,
     blurb,
     body,
@@ -26,6 +31,7 @@ function ProductPageContainer(props) {
     <ProductPage
       id={_id}
       title={title}
+      defaultProductVariant={defaultProductVariant}
       mainImage={mainImage}
       blurb={blurb}
       body={body}
@@ -38,7 +44,7 @@ function ProductPageContainer(props) {
 }
 
 export async function getStaticPaths() {
-  const products = await client.fetch(`*[_type == "product" && defined(slug.current)]{
+  const products = await getClient().fetch(`*[_type == "product" && defined(slug.current)]{
     "params": {"slug": slug.current}
   }`)
   return {
@@ -47,12 +53,12 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, preview = false }) {
   const { slug } = params
-  const productData = await client.fetch(query, { slug })
+  const productData = await getClient(preview).fetch(query, { slug })
 
   return {
-    props: { productData, errorCode: !productData && 404 } // will be passed to the page component as props
+    props: { preview, productData, errorCode: !productData && 404 } // will be passed to the page component as props
   }
 }
 

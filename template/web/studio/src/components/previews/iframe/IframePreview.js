@@ -6,11 +6,14 @@ import styles from './IframePreview.css'
 const assembleProjectUrl = ({displayed, options}) => {
   const {slug} = displayed
   const {previewURL} = options
-  if (!slug || !previewURL) {
+  if (!previewURL) {
     console.warn('Missing slug or previewURL', {slug, previewURL})
     return ''
   }
-  return `${previewURL}/project/${slug.current}`
+  if(!slug) {
+    return `${previewURL}`
+  }
+  return `${previewURL}${slug.current}`
 }
 
 class IframePreview extends React.PureComponent {
@@ -23,19 +26,19 @@ class IframePreview extends React.PureComponent {
   }
 
   render () {
-    const {options} = this.props
+    const {previewURL: url} = this.props
     const {displayed} = this.props.document
+
     if (!displayed) {
       return (<div className={styles.componentWrapper}>
         <p>There is no document to preview</p>
       </div>)
     }
 
-    const url = assembleProjectUrl({displayed, options})
-
     if (!url) {
       return (<div className={styles.componentWrapper}>
         <p>Hmm. Having problems constructing the web front-end URL.</p>
+        <pre>{JSON.stringify({options, displayed}, null, 2)}</pre>
       </div>)
     }
 

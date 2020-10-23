@@ -1,4 +1,5 @@
-import urlFor from '../utils/imageUrl'
+import {urlFor} from '../utils/sanity'
+import Link from 'next/link'
 
 function ProductCard ({
   _id,
@@ -13,7 +14,7 @@ function ProductCard ({
   defaultProductVariant
 }) {
   return (
-    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+    <Link href={`/products/${slug.current}`} ><a className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
       <div
         className="flex items-end justify-end h-56 w-full bg-cover"
         style={{
@@ -42,7 +43,7 @@ function ProductCard ({
         <h3 className="text-gray-700 uppercase">{title}</h3>
         <span className="text-gray-500 mt-2">${defaultProductVariant.price}</span>
       </div>
-    </div>
+      </a></Link>
   )
 }
 

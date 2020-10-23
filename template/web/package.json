@@ -8,10 +8,12 @@
     "studio:dev": "cd studio && sanity start"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^2.0.1",
     "@sanity/image-url": "^0.140.19",
     "concurrently": "^5.3.0",
     "next": "latest",
+    "next-sanity": "^0.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
