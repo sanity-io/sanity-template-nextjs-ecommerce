@@ -7,43 +7,40 @@ import {getClient, usePreviewSubscription} from '../../utils/sanity'
 const query = groq`*[_type == "product" && slug.current == $slug][0]`
 
 function ProductPageContainer(props) {
-
-  return <div>Commented out</div>
-  //
-  // const {data: productData} = usePreviewSubscription(query, {
-  //   params: {slug: props?.productData?.slug?.current},
-  //   initialData: props?.productData,
-  //   enabled: true
-  // })
-  // if (props?.errorCode) {
-  //   return <Error statusCode={errorCode} />
-  // }
-  // const {
-  //   _id,
-  //   title,
-  //   defaultProductVariant,
-  //   mainImage,
-  //   blurb,
-  //   body,
-  //   tags,
-  //   vendor,
-  //   categories,
-  //   slug
-  // } = productData
-  // return (
-  //   <ProductPage
-  //     id={_id}
-  //     title={title}
-  //     defaultProductVariant={defaultProductVariant}
-  //     mainImage={mainImage}
-  //     blurb={blurb}
-  //     body={body}
-  //     tags={tags}
-  //     vendor={vendor}
-  //     categories={categories}
-  //     slug={slug?.current}
-  //   />
-  // )
+  const {data: productData = {}} = usePreviewSubscription(query, {
+    params: {slug: props?.productData?.slug?.current},
+    initialData: props?.productData,
+    enabled: true
+  })
+  if (props?.errorCode) {
+    return <Error statusCode={errorCode} />
+  }
+  const {
+    _id,
+    title,
+    defaultProductVariant,
+    mainImage,
+    blurb,
+    body,
+    tags,
+    vendor,
+    categories,
+    slug
+  } = productData
+  return (
+    <ProductPage
+      id={_id}
+      title={title}
+      defaultProductVariant={defaultProductVariant}
+      mainImage={mainImage}
+      blurb={blurb}
+      body={body}
+      tags={tags}
+      vendor={vendor}
+      categories={categories}
+      slug={slug?.current}
+    />
+  )
 }
 
 export async function getStaticPaths() {

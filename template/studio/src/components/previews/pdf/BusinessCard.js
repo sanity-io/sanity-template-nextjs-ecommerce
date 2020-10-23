@@ -88,7 +88,7 @@ class BusinessCard extends React.PureComponent {
       this.fetchSubscription.unsubscribe()
     }
 
-    console.log('fetchData')
+
     this.fetchSubscription = of(null)
       .pipe(
         throttleTime(1000),
