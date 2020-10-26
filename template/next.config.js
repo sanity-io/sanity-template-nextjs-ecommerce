@@ -1,3 +1,10 @@
 module.exports = {
-  rewrites: [{ source: '/studio/(.*)', destination: '/studio/index.html' }]
+  async rewrites () {
+    return [
+      {
+        source: '/studio/(.*)',
+        destination: '/studio/index.html'
+      }
+    ]
+  }
 }
