@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently \"next --port $PORT\" \"cd studio && sanity start\"",
     "_build": "next build",
-    "build": "echo 'Building Sanity to public/studio' && cd studio && sanity build ../public/studio -y && cd .. && next build",
+    "build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
     "start": "vercel dev",
     "postinstall": "lerna bootstrap"
   },
