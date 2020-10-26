@@ -9,6 +9,11 @@
   },
   "technologies": [
     {
+      "id": "nextjs",
+      "name": "Next.js",
+      "url": "https://nextjs.org/"
+    },
+    {
       "id": "vercel",
       "name": "Vercel",
       "url": "https://vercel.com/"
