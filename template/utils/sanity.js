@@ -8,7 +8,8 @@ import {
 import {api} from '../studio/sanity.json'
 
 const config = {
-  ...api,
+  dataset: process.env.SANITY_STUDIO_API_DATASET,
+  projectId: process.env.SANITY_STUDIO_API_PROJECT_ID,
   useCdn: process.env.NODE_ENV === 'production',
 }
 export const urlFor = source => createImageUrlBuilder(config).image(source)
