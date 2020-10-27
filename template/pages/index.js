@@ -119,7 +119,8 @@ function IndexPage (props) {
 }
 
 
-export async function getStaticProps({preview = false}) {
+export async function getStaticProps({params}) {
+  const { preview = null } = params
   const productsData = await getClient(preview).fetch(query)
 
   return {

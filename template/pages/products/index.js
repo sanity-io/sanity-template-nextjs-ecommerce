@@ -17,7 +17,8 @@ function ProductsPageContainer(props) {
   return (<ProductsPage products={productsData} />)
 }
 
-export async function getStaticProps({preview = false}) {
+export async function getStaticProps({params}) {
+  const { preview } = params
   const productsData = await getClient(preview).fetch(query)
 
   return {

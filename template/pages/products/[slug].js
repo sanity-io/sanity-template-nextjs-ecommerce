@@ -51,8 +51,8 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params, preview = false }) {
-  const { slug } = params
+export async function getStaticProps({ params }) {
+  const { slug, preview = null } = params
   const productData = await getClient(preview).fetch(query, { slug })
 
   return {
