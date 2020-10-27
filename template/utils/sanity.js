@@ -5,10 +5,11 @@ import {
   createCurrentUserHook,
 } from 'next-sanity'
 
-import {api} from '../studio/sanity.json'
+
 
 const config = {
-  ...api,
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+  dataset: process.env.SANITY_STUDIO_DATASET,
   useCdn: process.env.NODE_ENV === 'production',
 }
 export const urlFor = source => createImageUrlBuilder(config).image(source)
