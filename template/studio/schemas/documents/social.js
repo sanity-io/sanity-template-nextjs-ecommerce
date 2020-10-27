@@ -1,5 +1,4 @@
 import { MdPeople } from "react-icons/md";
-import { TextAnalysisFieldDiff } from "../../src/diffComponents/social";
 export default {
   name: "social",
   type: "document",
@@ -16,7 +15,6 @@ export default {
     {
       name: "text",
       type: "text",
-      diffComponent: TextAnalysisFieldDiff,
     },
     {
       name: "attachment",
