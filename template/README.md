@@ -6,10 +6,8 @@ Features:
 
 * Live previews, including website preview for products
 * Custom diff components for Google Maps and Watson (require API TOKENS)
-* Product pages styled using Tailwind.css
+* Frontend with product pages styled using Tailwind.css
 * Content types for products, ads, pages, routes, popup shops, social media
-
-
 
 ## Credits
 
