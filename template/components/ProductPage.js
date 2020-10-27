@@ -1,4 +1,3 @@
-import Layout from './Layout'
 import BlockContent from '@sanity/block-content-to-react'
 import {urlFor, getClient} from '../utils/sanity'
 
@@ -10,7 +9,6 @@ function ProductPage (props) {
     body,
   } = props
   return (
-    <Layout>
       <div className="container mx-auto px-6">
         <div className="md:flex md:items-center">
           <div className="w-full h-64 md:w-1/2 lg:h-96">
@@ -93,7 +91,6 @@ function ProductPage (props) {
           {body && <BlockContent blocks={body?.en} {...getClient().config()} className="text-gray-600" />}
         </div>
       </div>
-    </Layout>
   )
 }
 

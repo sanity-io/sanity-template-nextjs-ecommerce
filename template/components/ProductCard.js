@@ -1,5 +1,5 @@
-import {urlFor} from '../utils/sanity'
 import Link from 'next/link'
+import {urlFor} from '../utils/sanity'
 
 function ProductCard ({
   _id,

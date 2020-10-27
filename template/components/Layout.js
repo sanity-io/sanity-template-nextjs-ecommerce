@@ -1,6 +1,14 @@
+import { useState } from 'react'
+import Link from 'next/link'
+import Cart from './Cart'
+
 function Layout ({ children }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false)
+  const handleMenu = () => setMenuOpen(!menuOpen)
+  const handleOpen = () => setCartOpen(!cartOpen)
   return (
-    <div x-data="{ cartOpen: false , isOpen: false }" className="bg-white">
+    <div className="bg-white">
       <header>
         <div className="container mx-auto px-6 py-3">
           <div className="flex items-center justify-between">
@@ -30,7 +38,10 @@ function Layout ({ children }) {
               Pulp Inc.
             </div>
             <div className="flex items-center justify-end w-full">
-              <button className="text-gray-600 focus:outline-none mx-4 sm:mx-0">
+              <button
+                onClick={handleOpen}
+                className="text-gray-600 focus:outline-none mx-4 sm:mx-0"
+              >
                 <svg
                   className="h-5 w-5"
                   fill="none"
@@ -46,6 +57,7 @@ function Layout ({ children }) {
 
               <div className="flex sm:hidden">
                 <button
+                  onClick={handleMenu}
                   type="button"
                   className="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500"
                   aria-label="toggle menu"
@@ -61,40 +73,26 @@ function Layout ({ children }) {
             </div>
           </div>
           <nav
-            className="isOpen ? '' : 'hidden'"
-            className="sm:flex sm:justify-center sm:items-center mt-4"
+            className={`${
+              menuOpen ? '' : 'hidden'
+            } sm:flex sm:justify-center sm:items-center mt-4`}
           >
             <div className="flex flex-col sm:flex-row">
-              <a
-                className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"
-                href="#"
-              >
-                Home
-              </a>
-              <a
-                className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"
-                href="#"
-              >
-                Shop
-              </a>
-              <a
-                className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"
-                href="#"
-              >
-                Categories
-              </a>
-              <a
-                className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"
-                href="#"
-              >
-                Contact
-              </a>
-              <a
-                className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"
-                href="#"
-              >
-                About
-              </a>
+              <Link href="/">
+                <a className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">
+                  Home
+                </a>
+              </Link>
+              <Link href="/products">
+                <a className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">
+                  Shop
+                </a>
+              </Link>
+              <Link href="/contact">
+                <a className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">
+                  About
+                </a>
+              </Link>
             </div>
           </nav>
           <div className="relative mt-6 max-w-lg mx-auto">
@@ -122,81 +120,7 @@ function Layout ({ children }) {
           </div>
         </div>
       </header>
-      {/* <div :className="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'" className="fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300">
-            <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-medium text-gray-700">Your cart</h3>
-                <button @click="cartOpen = !cartOpen" className="text-gray-600 focus:outline-none">
-                    <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            <hr className="my-3" />
-            <div className="flex justify-between mt-6">
-                <div className="flex">
-                    <img className="h-20 w-20 object-cover rounded" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80" alt=""/>
-                    <div className="mx-3">
-                        <h3 className="text-sm text-gray-600">Mac Book Pro</h3>
-                        <div className="flex items-center mt-2">
-                            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
-                                <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </button>
-                            <span className="text-gray-700 mx-2">2</span>
-                            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
-                                <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <span className="text-gray-600">20$</span>
-            </div>
-            <div className="flex justify-between mt-6">
-                <div className="flex">
-                    <img className="h-20 w-20 object-cover rounded" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80" alt=""/>
-                    <div className="mx-3">
-                        <h3 className="text-sm text-gray-600">Mac Book Pro</h3>
-                        <div className="flex items-center mt-2">
-                            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
-                                <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </button>
-                            <span className="text-gray-700 mx-2">2</span>
-                            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
-                                <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <span className="text-gray-600">20$</span>
-            </div>
-            <div className="flex justify-between mt-6">
-                <div className="flex">
-                    <img className="h-20 w-20 object-cover rounded" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80" alt=""/>
-                    <div className="mx-3">
-                        <h3 className="text-sm text-gray-600">Mac Book Pro</h3>
-                        <div className="flex items-center mt-2">
-                            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
-                                <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </button>
-                            <span className="text-gray-700 mx-2">2</span>
-                            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
-                                <svg className="h-5 w-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <span className="text-gray-600">20$</span>
-            </div>
-            <div className="mt-8">
-                <form className="flex items-center justify-center">
-                    <input className="form-input w-48" type="text" placeholder="Add promocode"/>
-                    <button className="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                        <span>Apply</span>
-                    </button>
-                </form>
-            </div>
-            <a className="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                <span>Chechout</span>
-                <svg className="h-5 w-5 mx-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </a>
-        </div> */}
+      <Cart cartOpen={cartOpen} handleOpen={handleOpen} />
       <main className="my-8">{children}</main>
       <footer className="bg-gray-200">
         <div className="container mx-auto px-6 py-3 flex justify-between items-center">

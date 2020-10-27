@@ -2,14 +2,16 @@ import React, {useEffect, useState} from 'react'
 import {useDebounce} from './useDebounce'
 import {DiffFromTo, FromTo, DiffCard, DiffTooltip } from '@sanity/field/diff'
 
-const apiKey = 'HCGFupt5a1XsC9BEKpJbm4pgX8Z1GxsOznbWfcxV18SV'
+// make your own watson API key here
+const apiKey = process.env.SANITY_DIFF_WATSON
+const watsonURL = process.env.SANITY_WATSON_URL
 let headers = new Headers();
 headers.append('Authorization', 'Basic ' + btoa('apikey:' + apiKey));
 
 function TextPreviewComponent({value, diff, from}) {
   const [tone, setTone] = useState(false)
   const fetchSentiment = () => {
-    fetch(`https://api.eu-de.tone-analyzer.watson.cloud.ibm.com/instances/c9a6ea11-f5b7-436f-a454-4d1f8784a1dc/v3/tone?version=2017-09-21&text=${value}`, {headers})
+    fetch(`${watsonURL}=${value}`, {headers})
     .then(res => res.json())
     .then(data => setTone(data))
   }

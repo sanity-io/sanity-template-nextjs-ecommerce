@@ -14,9 +14,7 @@ function ProductsPageContainer(props) {
   if (props?.errorCode) {
     return <Error statusCode={errorCode} />
   }
-  return (
-    <ProductsPage products={productsData} />
-  )
+  return (<ProductsPage products={productsData} />)
 }
 
 export async function getStaticProps({preview}) {

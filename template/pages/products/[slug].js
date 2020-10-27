@@ -27,8 +27,7 @@ function ProductPageContainer(props) {
     categories,
     slug
   } = productData
-  return (
-    <ProductPage
+  return (<ProductPage
       id={_id}
       title={title}
       defaultProductVariant={defaultProductVariant}
@@ -39,8 +38,7 @@ function ProductPageContainer(props) {
       vendor={vendor}
       categories={categories}
       slug={slug?.current}
-    />
-  )
+    />)
 }
 
 export async function getStaticPaths() {

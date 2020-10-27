@@ -46,8 +46,8 @@ export default () =>
                   .schemaType('siteConfig')
                   .documentId('siteConfig')
               ),
-              S.documentTypeListItem('route'),
-              S.documentTypeListItem('page')
+              S.documentTypeListItem('route').title('Routes'),
+              S.documentTypeListItem('page').title('Pages')
             ])
         ),
         ads,
