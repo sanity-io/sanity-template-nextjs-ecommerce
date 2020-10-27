@@ -10,7 +10,7 @@ function ProductPageContainer(props) {
   const {data: productData = {}} = usePreviewSubscription(query, {
     params: {slug: props?.productData?.slug?.current},
     initialData: props?.productData,
-    enabled: true
+    enabled: props?.preview
   })
   if (props?.errorCode) {
     return <Error statusCode={errorCode} />
