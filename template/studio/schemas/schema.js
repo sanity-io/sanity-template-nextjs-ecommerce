@@ -21,7 +21,6 @@ import popup from "./documents/popup";
 // Object types
 import blockContent from "./objects/blockContent";
 import cta from "./objects/cta";
-import embedHTML from "./objects/embedHTML";
 import figure from "./objects/figure";
 import internalLink from "./objects/internalLink";
 import link from "./objects/link";
@@ -32,7 +31,6 @@ import contactInfo from "./objects/contactInfo";
 // Landing page sections
 import hero from "./objects/hero";
 import imageSection from "./objects/imageSection";
-import mailchimp from "./objects/mailchimp";
 import textSection from "./objects/textSection";
 
 import localeString from "./locale/String";
@@ -62,13 +60,11 @@ export default createSchema({
     person,
     // When added to this list, object types can be used as
     cta,
-    embedHTML,
     figure,
     internalLink,
     link,
     hero,
     imageSection,
-    mailchimp,
     textSection,
     portableText,
     simplePortableText,

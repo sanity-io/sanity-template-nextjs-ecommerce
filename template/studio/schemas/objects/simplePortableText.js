@@ -17,8 +17,5 @@ export default {
         annotations: [{ type: "link" }, { type: "internalLink" }],
       },
     },
-    {
-      type: "embedHTML",
-    },
   ],
 };

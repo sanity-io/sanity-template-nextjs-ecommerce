@@ -2,3 +2,5 @@ node_modules
 build
 dist
 .DS_Store
+.env
+.env.development
