@@ -1,22 +1,22 @@
-import Error from 'next/error'
-import {getClient, usePreviewSubscription} from '../utils/sanity'
-import ProductsPage from '../components/ProductsPage'
+import Error from "next/error";
+import { getClient, usePreviewSubscription } from "../utils/sanity";
+import ProductsPage from "../components/ProductsPage";
 
 const query = `//groq
   *[_type == "product" && defined(slug.current)]
-`
+`;
 
-function IndexPage (props) {
-  const {data: productsData} = usePreviewSubscription(query, {
+function IndexPage(props) {
+  const { data: productsData } = usePreviewSubscription(query, {
     initialData: props?.productsData,
-    enabled: true
-  })
+    enabled: true,
+  });
   if (props?.errorCode) {
-    return <Error statusCode={props.errorCode} />
+    return <Error statusCode={props.errorCode} />;
   }
   return (
-      <div className="my-8">
-        {/* <div className="container mx-auto px-6">
+    <div className="my-8">
+      {/* <div className="container mx-auto px-6">
           <div
             className="h-64 rounded-md overflow-hidden bg-cover bg-center"
             style={{backgroundImage: `url('https://images.unsplash.com/photo-1577655197620-704858b270ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1280&q=144')`}}
@@ -111,21 +111,23 @@ function IndexPage (props) {
             </div>
           </div>
         </div> */}
-        <div className="mt-4">
-          <ProductsPage products={productsData} />
-        </div>
+      <div className="mt-4">
+        <ProductsPage products={productsData} />
       </div>
-  )
+    </div>
+  );
 }
 
-
-export async function getStaticProps({params = {}}) {
-  const { preview = null } = params
-  const productsData = await getClient(preview).fetch(query)
+export async function getStaticProps({ params = {} }) {
+  const { preview = null } = params;
+  const productsData = await getClient(preview).fetch(query);
 
   return {
-    props: { productsData: productsData || null, errorCode: !productsData && 404 } // will be passed to the page component as props
-  }
+    props: {
+      productsData: productsData || null,
+      errorCode: !productsData && 404,
+    }, // will be passed to the page component as props
+  };
 }
 
-export default IndexPage
+export default IndexPage;

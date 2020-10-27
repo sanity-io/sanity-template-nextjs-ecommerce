@@ -23,7 +23,8 @@
     "lerna": "^3.22.1",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.9.6"
+    "tailwindcss": "^1.9.6",
+    "prettier": "^2.1.2"
   },
   "keywords": [],
   "author": "Sanity.io <hello@sanity.io>",

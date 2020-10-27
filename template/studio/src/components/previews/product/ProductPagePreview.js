@@ -16,5 +16,5 @@ export default function ProductsPreview(props) {
           : `http://localhost:3000/products/${displayed?.slug?.current}?preview`
       }
     />
-  )
+  );
 }

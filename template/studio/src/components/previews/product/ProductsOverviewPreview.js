@@ -7,6 +7,7 @@ export default function ProductsOverviewPreview(props) {
   if (!url) {
     return <div>You need to add SANITY_STUDIO_WEBSITE_URL to your <a href="https://www.sanity.io/docs/studio-environment-variables">environment variables</a>.</div>
   }
+
   return (
     <IframePreview
       {...props}
@@ -16,5 +17,5 @@ export default function ProductsOverviewPreview(props) {
         : `http://localhost:3000/products/${displayed?.slug?.current}?preview`
       }
     />
-  )
+  );
 }

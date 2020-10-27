@@ -1,7 +1,7 @@
-import * as React from 'react'
-import styles from './LoadError.css'
+import * as React from "react";
+import styles from "./LoadError.css";
 
-type Props = {error: Error; isAuthError: false} | {isAuthError: true}
+type Props = { error: Error; isAuthError: false } | { isAuthError: true };
 
 export function LoadError(props: Props) {
   return (
@@ -23,7 +23,7 @@ export function LoadError(props: Props) {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 function AuthError() {
@@ -38,5 +38,5 @@ function AuthError() {
       </ul>
       <p>Check the browser developer tools for more information.</p>
     </>
-  )
+  );
 }

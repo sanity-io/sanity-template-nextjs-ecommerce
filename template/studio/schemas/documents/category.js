@@ -1,37 +1,37 @@
 export default {
-  name: 'category',
-  title: 'Category',
-  type: 'document',
+  name: "category",
+  title: "Category",
+  type: "document",
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string'
+      name: "title",
+      title: "Title",
+      type: "string",
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
-        maxLength: 96
-      }
+        source: "title",
+        maxLength: 96,
+      },
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'text'
+      name: "description",
+      title: "Description",
+      type: "text",
     },
     {
-      name: 'parents',
-      title: 'Parent categories',
-      type: 'array',
+      name: "parents",
+      title: "Parent categories",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: [{type: 'category'}]
-        }
-      ]
-    }
-  ]
-}
+          type: "reference",
+          to: [{ type: "category" }],
+        },
+      ],
+    },
+  ],
+};

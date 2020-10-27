@@ -1,14 +1,17 @@
 {
   "name": "sanity-template-nextjs-ecommerce",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "Sanity.io and Next.js Ecommerce Starter template",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sanity-template check"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sanity-io/sanity-template-nextjs-ecommerce.git"
+  },
+  "dependencies": {
+    "sanity-template": "^2.1.1"
   },
   "keywords": [],
   "author": "",

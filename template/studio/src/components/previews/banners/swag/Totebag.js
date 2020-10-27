@@ -1,30 +1,32 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import sanityClient from 'part:@sanity/base/client'
-import imageUrlBuilder from '@sanity/image-url'
-import styles from './Totebag.css'
+import React from "react";
+import PropTypes from "prop-types";
+import sanityClient from "part:@sanity/base/client";
+import imageUrlBuilder from "@sanity/image-url";
+import styles from "./Totebag.css";
 
-const builder = imageUrlBuilder(sanityClient)
+const builder = imageUrlBuilder(sanityClient);
 
-const urlFor = source => {
-  return builder.image(source)
-}
+const urlFor = (source) => {
+  return builder.image(source);
+};
 
 export default class Totebag extends React.PureComponent {
   static propTypes = {
-    document: PropTypes.object
-  }
+    document: PropTypes.object,
+  };
 
   static defaultProps = {
-    document: ''
-  }
+    document: "",
+  };
 
-  render () {
-    const {decoration = {}} = this.props.document
-    const {heading = 'No heading', tagline = 'No tagline', illustration} = decoration
-    const imageUrl = urlFor(illustration)
-      .width(500)
-      .url()
+  render() {
+    const { decoration = {} } = this.props.document;
+    const {
+      heading = "No heading",
+      tagline = "No tagline",
+      illustration,
+    } = decoration;
+    const imageUrl = urlFor(illustration).width(500).url();
 
     return (
       <div className={styles.banner}>
@@ -34,7 +36,6 @@ export default class Totebag extends React.PureComponent {
           <div className={styles.tagline}>{tagline}</div>
         </div>
       </div>
-    )
+    );
   }
 }
-

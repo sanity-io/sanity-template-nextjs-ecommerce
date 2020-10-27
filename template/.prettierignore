@@ -1,5 +1,5 @@
 .vercel
 .next
-.env
 public/studio
+studio/node_modules
 node_modules

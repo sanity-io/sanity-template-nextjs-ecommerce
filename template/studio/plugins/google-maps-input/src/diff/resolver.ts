@@ -1,21 +1,23 @@
-import {DiffComponentResolver} from '@sanity/field/diff'
-import {GeopointFieldDiff} from './GeopointFieldDiff'
-import {GeopointArrayDiff} from './GeopointArrayDiff'
+import { DiffComponentResolver } from "@sanity/field/diff";
+import { GeopointFieldDiff } from "./GeopointFieldDiff";
+import { GeopointArrayDiff } from "./GeopointArrayDiff";
 
-const diffResolver: DiffComponentResolver = function diffResolver({schemaType}) {
-  if (schemaType.name === 'geopoint') {
-    return GeopointFieldDiff
+const diffResolver: DiffComponentResolver = function diffResolver({
+  schemaType,
+}) {
+  if (schemaType.name === "geopoint") {
+    return GeopointFieldDiff;
   }
 
   if (
-    schemaType.jsonType === 'array' &&
+    schemaType.jsonType === "array" &&
     schemaType.of.length === 1 &&
-    schemaType.of[0].name === 'geopoint'
+    schemaType.of[0].name === "geopoint"
   ) {
-    return GeopointArrayDiff
+    return GeopointArrayDiff;
   }
 
-  return undefined
-}
+  return undefined;
+};
 
-export default diffResolver
+export default diffResolver;

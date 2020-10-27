@@ -1,29 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import sanityClient from 'part:@sanity/base/client'
-import imageUrlBuilder from '@sanity/image-url'
-import styles from './NewyorkBanner.css'
+import React from "react";
+import PropTypes from "prop-types";
+import sanityClient from "part:@sanity/base/client";
+import imageUrlBuilder from "@sanity/image-url";
+import styles from "./NewyorkBanner.css";
 
-const builder = imageUrlBuilder(sanityClient)
+const builder = imageUrlBuilder(sanityClient);
 
-const urlFor = source => {
-  return builder.image(source)
-}
+const urlFor = (source) => {
+  return builder.image(source);
+};
 
 class NewyorkBanner extends React.PureComponent {
   static propTypes = {
-    document: PropTypes.object
-  }
+    document: PropTypes.object,
+  };
 
   static defaultProps = {
-    document: ''
-  }
+    document: "",
+  };
 
-  render () {
-    const {heading, tagline, illustration} = this.props.document
-    const imageUrl = urlFor(illustration)
-      .width(500)
-      .url()
+  render() {
+    const { heading, tagline, illustration } = this.props.document;
+    const imageUrl = urlFor(illustration).width(500).url();
 
     return (
       <div className={styles.banner}>
@@ -33,8 +31,8 @@ class NewyorkBanner extends React.PureComponent {
           <div className={styles.tagline}>{tagline}</div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default NewyorkBanner
+export default NewyorkBanner;
