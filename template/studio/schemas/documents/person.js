@@ -1,30 +1,30 @@
-import {MdPerson} from 'react-icons/md'
+import { MdPerson } from "react-icons/md";
 
 export default {
-  name: 'person',
-  type: 'document',
-  title: 'Person',
+  name: "person",
+  type: "document",
+  title: "Person",
   icon: MdPerson,
   fields: [
     {
-      name: 'name',
-      type: 'string',
-      title: 'Full name'
+      name: "name",
+      type: "string",
+      title: "Full name",
     },
     {
-      name: 'photo',
-      type: 'figure',
-      title: 'Photo'
+      name: "photo",
+      type: "figure",
+      title: "Photo",
     },
     {
-      name: 'description',
-      type: 'text',
-      title: 'Description'
+      name: "description",
+      type: "text",
+      title: "Description",
     },
     {
-      name: 'contactInfo',
-      type: 'contactInfo',
-      title: 'Contact information'
-    }
-  ]
-}
+      name: "contactInfo",
+      type: "contactInfo",
+      title: "Contact information",
+    },
+  ],
+};

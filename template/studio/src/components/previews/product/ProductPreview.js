@@ -11,7 +11,14 @@ export default function ProductPreview({ document }) {
   const handleInc = () => setNumber(number + 1);
   const handleDec = () => setNumber(number - 1);
   const { displayed } = document;
-  const { defaultProductVariant, title, blurb, body, tags, mainImage } = displayed;
+  const {
+    defaultProductVariant,
+    title,
+    blurb,
+    body,
+    tags,
+    mainImage,
+  } = displayed;
   return (
     <div className={styles.container}>
       <ul className={[styles.nav, styles.userNav].join(" ")}>
@@ -40,16 +47,24 @@ export default function ProductPreview({ document }) {
 
       <div className={styles.hero}>
         <div className={styles.photo}>
-          <img src={urlFor(mainImage).width(800).height(1000).quality(100).url()} />
+          <img
+            src={urlFor(mainImage).width(800).height(1000).quality(100).url()}
+          />
         </div>
         <div className={styles.info}>
           <h1>{title}</h1>
-          {defaultProductVariant && <div className={styles.price}>${defaultProductVariant?.price}</div>}
+          {defaultProductVariant && (
+            <div className={styles.price}>${defaultProductVariant?.price}</div>
+          )}
           {blurb && <p>{blurb.en}</p>}
           {body && <BlockContent blocks={body?.en} />}
           <div className={styles.buy}>
             <span className={styles.quantityNumber}>Qty: {number} </span>
-            <button className={styles.quantity} onClick={handleDec} disabled={number < 1}>
+            <button
+              className={styles.quantity}
+              onClick={handleDec}
+              disabled={number < 1}
+            >
               -
             </button>{" "}
             <button className={styles.quantity} onClick={handleInc}>

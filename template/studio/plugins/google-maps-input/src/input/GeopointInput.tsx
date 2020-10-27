@@ -1,145 +1,161 @@
-import React from 'react'
-import classNames from 'classnames'
-import {Path, Marker} from '@sanity/types'
-import config from 'config:@sanity/google-maps-input'
-import Button from 'part:@sanity/components/buttons/default'
-import Dialog from 'part:@sanity/components/dialogs/default'
-import Fieldset from 'part:@sanity/components/fieldsets/default'
-import {PatchEvent, set, setIfMissing, unset} from 'part:@sanity/form-builder/patch-event'
-import ButtonGrid from 'part:@sanity/components/buttons/button-grid'
-import EditIcon from 'part:@sanity/base/edit-icon'
-import TrashIcon from 'part:@sanity/base/trash-icon'
-import {ChangeIndicatorCompareValueProvider} from '@sanity/base/lib/change-indicators/ChangeIndicator'
-import {ChangeIndicator} from '@sanity/base/lib/change-indicators'
-import {GoogleMapsLoadProxy} from '../loader/GoogleMapsLoadProxy'
-import {Geopoint, GeopointSchemaType} from '../types'
-import {GeopointSelect} from './GeopointSelect'
-import styles from './GeopointInput.css'
+import React from "react";
+import classNames from "classnames";
+import { Path, Marker } from "@sanity/types";
+import config from "config:@sanity/google-maps-input";
+import Button from "part:@sanity/components/buttons/default";
+import Dialog from "part:@sanity/components/dialogs/default";
+import Fieldset from "part:@sanity/components/fieldsets/default";
+import {
+  PatchEvent,
+  set,
+  setIfMissing,
+  unset,
+} from "part:@sanity/form-builder/patch-event";
+import ButtonGrid from "part:@sanity/components/buttons/button-grid";
+import EditIcon from "part:@sanity/base/edit-icon";
+import TrashIcon from "part:@sanity/base/trash-icon";
+import { ChangeIndicatorCompareValueProvider } from "@sanity/base/lib/change-indicators/ChangeIndicator";
+import { ChangeIndicator } from "@sanity/base/lib/change-indicators";
+import { GoogleMapsLoadProxy } from "../loader/GoogleMapsLoadProxy";
+import { Geopoint, GeopointSchemaType } from "../types";
+import { GeopointSelect } from "./GeopointSelect";
+import styles from "./GeopointInput.css";
 
-const getStaticImageUrl = value => {
-  const loc = `${value.lat},${value.lng}`
+const getStaticImageUrl = (value) => {
+  const loc = `${value.lat},${value.lng}`;
   const params = {
     key: config.apiKey,
     center: loc,
     markers: loc,
     zoom: 13,
     scale: 2,
-    size: '640x300'
-  }
+    size: "640x300",
+  };
 
   const qs = Object.keys(params).reduce((res, param) => {
-    return res.concat(`${param}=${encodeURIComponent(params[param])}`)
-  }, [] as string[])
+    return res.concat(`${param}=${encodeURIComponent(params[param])}`);
+  }, [] as string[]);
 
-  return `https://maps.googleapis.com/maps/api/staticmap?${qs.join('&')}`
-}
+  return `https://maps.googleapis.com/maps/api/staticmap?${qs.join("&")}`;
+};
 
 interface InputProps {
-  markers: Marker[]
-  level?: number
-  value?: Geopoint
-  compareValue?: Geopoint
-  type: GeopointSchemaType
-  readOnly?: boolean
-  onFocus: (path: Path) => void
-  onBlur: () => void
-  onChange: (patchEvent: unknown) => void
-  presence: unknown[]
+  markers: Marker[];
+  level?: number;
+  value?: Geopoint;
+  compareValue?: Geopoint;
+  type: GeopointSchemaType;
+  readOnly?: boolean;
+  onFocus: (path: Path) => void;
+  onBlur: () => void;
+  onChange: (patchEvent: unknown) => void;
+  presence: unknown[];
 }
 
 // @todo
 // interface Focusable {
 //   focus: () => void
 // }
-type Focusable = any
+type Focusable = any;
 
 interface InputState {
-  modalOpen: boolean
-  hasFocus: boolean
+  modalOpen: boolean;
+  hasFocus: boolean;
 }
 
 class GeopointInput extends React.PureComponent<InputProps, InputState> {
   static defaultProps = {
-    markers: []
-  }
+    markers: [],
+  };
 
-  editButton: Focusable | undefined
+  editButton: Focusable | undefined;
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       modalOpen: false,
-      hasFocus: false
-    }
+      hasFocus: false,
+    };
   }
 
   setEditButton = (el: Focusable) => {
-    this.editButton = el
-  }
+    this.editButton = el;
+  };
 
   focus() {
     if (this.editButton) {
-      this.editButton.focus()
+      this.editButton.focus();
     }
   }
 
-  handleFocus = event => {
-    this.setState({hasFocus: true})
-    this.props.onFocus(event)
-  }
+  handleFocus = (event) => {
+    this.setState({ hasFocus: true });
+    this.props.onFocus(event);
+  };
 
   handleBlur = () => {
-    this.setState({hasFocus: false})
-    this.props.onBlur()
-  }
+    this.setState({ hasFocus: false });
+    this.props.onBlur();
+  };
 
   handleToggleModal = () => {
-    const {onFocus, onBlur} = this.props
+    const { onFocus, onBlur } = this.props;
     this.setState(
-      prevState => ({modalOpen: !prevState.modalOpen}),
+      (prevState) => ({ modalOpen: !prevState.modalOpen }),
       () => {
         if (this.state.modalOpen) {
-          onFocus(['$'])
+          onFocus(["$"]);
         } else {
-          onBlur()
+          onBlur();
         }
       }
-    )
-  }
+    );
+  };
 
   handleCloseModal = () => {
-    this.setState({modalOpen: false})
-  }
+    this.setState({ modalOpen: false });
+  };
 
   handleChange = (latLng: google.maps.LatLng) => {
-    const {type, onChange} = this.props
+    const { type, onChange } = this.props;
     onChange(
       PatchEvent.from([
         setIfMissing({
-          _type: type.name
+          _type: type.name,
         }),
-        set(latLng.lat(), ['lat']),
-        set(latLng.lng(), ['lng'])
+        set(latLng.lat(), ["lat"]),
+        set(latLng.lng(), ["lng"]),
       ])
-    )
-  }
+    );
+  };
 
   handleClear = () => {
-    const {onChange} = this.props
-    onChange(PatchEvent.from(unset()))
-  }
+    const { onChange } = this.props;
+    onChange(PatchEvent.from(unset()));
+  };
 
   render() {
-    const {value, compareValue, readOnly, type, markers, level, presence} = this.props
-    const {modalOpen, hasFocus} = this.state
+    const {
+      value,
+      compareValue,
+      readOnly,
+      type,
+      markers,
+      level,
+      presence,
+    } = this.props;
+    const { modalOpen, hasFocus } = this.state;
 
     if (!config || !config.apiKey) {
       return (
         <div>
           <p>
-            The <a href="https://sanity.io/docs/schema-types/geopoint-type">Geopoint type</a> needs
-            a Google Maps API key with access to:
+            The{" "}
+            <a href="https://sanity.io/docs/schema-types/geopoint-type">
+              Geopoint type
+            </a>{" "}
+            needs a Google Maps API key with access to:
           </p>
           <ul>
             <li>Google Maps JavaScript API</li>
@@ -148,12 +164,12 @@ class GeopointInput extends React.PureComponent<InputProps, InputState> {
           </ul>
           <p>
             Please enter the API key with access to these services in
-            <code style={{whiteSpace: 'nowrap'}}>
+            <code style={{ whiteSpace: "nowrap" }}>
               `&lt;project-root&gt;/config/@sanity/google-maps-input.json`
             </code>
           </p>
         </div>
-      )
+      );
     }
 
     return (
@@ -169,7 +185,10 @@ class GeopointInput extends React.PureComponent<InputProps, InputState> {
       >
         <div>
           {value && (
-            <ChangeIndicatorCompareValueProvider value={value} compareValue={compareValue}>
+            <ChangeIndicatorCompareValueProvider
+              value={value}
+              compareValue={compareValue}
+            >
               <ChangeIndicator
                 className={classNames(
                   styles.map,
@@ -195,11 +214,16 @@ class GeopointInput extends React.PureComponent<InputProps, InputState> {
                 icon={value && EditIcon}
                 ref={this.setEditButton}
               >
-                {value ? 'Edit' : 'Set location'}
+                {value ? "Edit" : "Set location"}
               </Button>
 
               {value && (
-                <Button color="danger" icon={TrashIcon} inverted onClick={this.handleClear}>
+                <Button
+                  color="danger"
+                  icon={TrashIcon}
+                  inverted
+                  onClick={this.handleClear}
+                >
                   Remove
                 </Button>
               )}
@@ -217,7 +241,7 @@ class GeopointInput extends React.PureComponent<InputProps, InputState> {
             >
               <div className={styles.dialogInner}>
                 <GoogleMapsLoadProxy>
-                  {api => (
+                  {(api) => (
                     <GeopointSelect
                       api={api}
                       value={value}
@@ -232,8 +256,8 @@ class GeopointInput extends React.PureComponent<InputProps, InputState> {
           )}
         </div>
       </Fieldset>
-    )
+    );
   }
 }
 
-export default GeopointInput
+export default GeopointInput;

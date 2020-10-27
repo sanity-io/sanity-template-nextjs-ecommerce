@@ -1,11 +1,11 @@
 {
   "root": true,
   "api": {
-    "projectId": "jmhf2rn8",
-    "dataset": "nextjs-ecommerce"
+    "projectId": "placeholder",
+    "dataset": "placeholder"
   },
   "project": {
-    "name": "Next.js E-commerce",
+    "name": "review-changes-launch-demo",
     "basePath": "/studio"
   },
   "plugins": [

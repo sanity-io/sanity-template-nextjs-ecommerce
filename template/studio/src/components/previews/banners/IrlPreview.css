@@ -48,11 +48,11 @@
 }
 
 .aden {
-  filter: hue-rotate(-20deg) contrast(.9) saturate(.85) brightness(1.2);
+  filter: hue-rotate(-20deg) contrast(0.9) saturate(0.85) brightness(1.2);
 }
 
 .aden::before {
-  background: linear-gradient(to right,rgba(66,10,14,.2),transparent);
+  background: linear-gradient(to right, rgba(66, 10, 14, 0.2), transparent);
   mix-blend-mode: darken;
 }
 

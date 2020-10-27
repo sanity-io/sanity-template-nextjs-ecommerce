@@ -1,12 +1,15 @@
-@import 'part:@sanity/base/theme/variables-style';
+@import "part:@sanity/base/theme/variables-style";
 
 .card {
   border-radius: 2px;
-  background-color: color(var(--component-bg) blend(var(--state-danger-color) 10%));
+  background-color: color(
+    var(--component-bg) blend(var(--state-danger-color) 10%)
+  );
 }
 
 .cardHeader {
-  padding: var(--medium-padding) var(--medium-padding) var(--extra-small-padding);
+  padding: var(--medium-padding) var(--medium-padding)
+    var(--extra-small-padding);
 }
 
 .cardTitle {
@@ -18,7 +21,8 @@
 .cardContent {
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
-  padding: var(--extra-small-padding) var(--medium-padding) var(--medium-padding);
+  padding: var(--extra-small-padding) var(--medium-padding)
+    var(--medium-padding);
 
   @nest & p, & ul {
     margin: var(--small-padding) 0;

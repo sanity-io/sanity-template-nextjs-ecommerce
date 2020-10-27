@@ -1,33 +1,33 @@
-import {MdLocationOn} from 'react-icons/md'
+import { MdLocationOn } from "react-icons/md";
 
 export default {
-  name: 'popup',
-  type: 'document',
-  title: 'Popup Shop',
+  name: "popup",
+  type: "document",
+  title: "Popup Shop",
   icon: MdLocationOn,
   fields: [
     {
-      name: 'name',
-      type: 'string',
+      name: "name",
+      type: "string",
     },
     {
-      name: 'location',
-      type: 'geopoint',
+      name: "location",
+      type: "geopoint",
     },
     {
-      name: 'openingHours',
-      type: 'object',
-      title: 'Opening hours',
+      name: "openingHours",
+      type: "object",
+      title: "Opening hours",
       fields: [
         {
-          name: 'from',
-          type: 'datetime',
+          name: "from",
+          type: "datetime",
         },
         {
-          name: 'to',
-          type: 'datetime'
-        }
-      ]
-    }
-  ]
-}
+          name: "to",
+          type: "datetime",
+        },
+      ],
+    },
+  ],
+};

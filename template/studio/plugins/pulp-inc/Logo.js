@@ -1,2 +1,2 @@
-import {MdLocalDrink} from 'react-icons/md'
-export default MdLocalDrink
+import { MdLocalDrink } from "react-icons/md";
+export default MdLocalDrink;

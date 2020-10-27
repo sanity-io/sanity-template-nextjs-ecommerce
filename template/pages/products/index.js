@@ -1,29 +1,29 @@
-import Error from 'next/error'
-import ProductsPage from '../../components/ProductsPage'
-import {getClient, usePreviewSubscription} from '../../utils/sanity'
+import Error from "next/error";
+import ProductsPage from "../../components/ProductsPage";
+import { getClient, usePreviewSubscription } from "../../utils/sanity";
 
 const query = `//groq
   *[_type == "product" && defined(slug.current)]
-`
+`;
 
 function ProductsPageContainer(props) {
-  const {data: productsData} = usePreviewSubscription(query, {
+  const { data: productsData } = usePreviewSubscription(query, {
     initialData: props?.productsData,
-    enabled: true
-  })
+    enabled: true,
+  });
   if (props?.errorCode) {
-    return <Error statusCode={errorCode} />
+    return <Error statusCode={errorCode} />;
   }
-  return (<ProductsPage products={productsData} />)
+  return <ProductsPage products={productsData} />;
 }
 
-export async function getStaticProps({params = {}}) {
-  const { preview } = params
-  const productsData = await getClient(preview).fetch(query)
+export async function getStaticProps({ params = {} }) {
+  const { preview } = params;
+  const productsData = await getClient(preview).fetch(query);
 
   return {
-    props: { productsData, errorCode: !productsData && 404 } // will be passed to the page component as props
-  }
+    props: { productsData, errorCode: !productsData && 404 }, // will be passed to the page component as props
+  };
 }
 
-export default ProductsPageContainer
+export default ProductsPageContainer;

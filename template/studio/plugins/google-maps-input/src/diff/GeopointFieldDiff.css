@@ -1,4 +1,4 @@
-@import 'part:@sanity/base/theme/variables-style';
+@import "part:@sanity/base/theme/variables-style";
 
 .root {
   position: relative;
@@ -7,7 +7,7 @@
   overflow: hidden;
 
   @nest &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 0;
@@ -26,7 +26,7 @@
 }
 
 .root:empty:after {
-  content: 'Missing/invalid data';
+  content: "Missing/invalid data";
   display: table-cell;
   vertical-align: middle;
   text-align: center;

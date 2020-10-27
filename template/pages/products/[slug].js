@@ -1,19 +1,18 @@
-import Error from 'next/error'
-import ProductPage from '../../components/ProductPage'
-import {groq} from 'next-sanity'
-import {getClient, usePreviewSubscription} from '../../utils/sanity'
+import Error from "next/error";
+import ProductPage from "../../components/ProductPage";
+import { groq } from "next-sanity";
+import { getClient, usePreviewSubscription } from "../../utils/sanity";
 
-
-const query = groq`*[_type == "product" && slug.current == $slug][0]`
+const query = groq`*[_type == "product" && slug.current == $slug][0]`;
 
 function ProductPageContainer(props) {
-  const {data: productData = {}} = usePreviewSubscription(query, {
-    params: {slug: props?.productData?.slug?.current},
+  const { data: productData = {} } = usePreviewSubscription(query, {
+    params: { slug: props?.productData?.slug?.current },
     initialData: props?.productData,
-    enabled: props?.preview
-  })
+    enabled: props?.preview,
+  });
   if (props?.errorCode) {
-    return <Error statusCode={errorCode} />
+    return <Error statusCode={errorCode} />;
   }
   const {
     _id,
@@ -25,9 +24,10 @@ function ProductPageContainer(props) {
     tags,
     vendor,
     categories,
-    slug
-  } = productData
-  return (<ProductPage
+    slug,
+  } = productData;
+  return (
+    <ProductPage
       id={_id}
       title={title}
       defaultProductVariant={defaultProductVariant}
@@ -38,26 +38,28 @@ function ProductPageContainer(props) {
       vendor={vendor}
       categories={categories}
       slug={slug?.current}
-    />)
+    />
+  );
 }
 
 export async function getStaticPaths() {
-  const products = await getClient().fetch(`*[_type == "product" && defined(slug.current)]{
+  const products = await getClient()
+    .fetch(`*[_type == "product" && defined(slug.current)]{
     "params": {"slug": slug.current}
-  }`)
+  }`);
   return {
     paths: products,
-    fallback: true
-  }
+    fallback: true,
+  };
 }
 
-export async function getStaticProps({params = {}}) {
-  const { slug, preview = null } = params
-  const productData = await getClient(preview).fetch(query, { slug })
+export async function getStaticProps({ params = {} }) {
+  const { slug, preview = null } = params;
+  const productData = await getClient(preview).fetch(query, { slug });
 
   return {
-    props: { preview, productData, errorCode: !productData && 404 } // will be passed to the page component as props
-  }
+    props: { preview, productData, errorCode: !productData && 404 }, // will be passed to the page component as props
+  };
 }
 
-export default ProductPageContainer
+export default ProductPageContainer;

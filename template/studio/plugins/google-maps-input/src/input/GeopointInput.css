@@ -1,4 +1,4 @@
-@import 'part:@sanity/base/theme/variables-style';
+@import "part:@sanity/base/theme/variables-style";
 
 .previewImage {
   width: 100%;
@@ -23,7 +23,7 @@
   border-radius: var(--input-border-radius);
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 0;
@@ -40,7 +40,7 @@
 }
 
 .functions {
-  composes: functions from 'part:@sanity/components/fieldsets/default-style';
+  composes: functions from "part:@sanity/components/fieldsets/default-style";
 }
 
 .map + .functions {

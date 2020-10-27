@@ -1,23 +1,24 @@
-import * as React from 'react'
-import {useUserColor} from '@sanity/base/user-color'
-import {ObjectDiff} from '@sanity/field/diff'
-import {Marker} from '../map/Marker'
-import {Arrow} from '../map/Arrow'
-import {Geopoint} from '../types'
+import * as React from "react";
+import { useUserColor } from "@sanity/base/user-color";
+import { ObjectDiff } from "@sanity/field/diff";
+import { Marker } from "../map/Marker";
+import { Arrow } from "../map/Arrow";
+import { Geopoint } from "../types";
 
 interface Props {
-  api: typeof window.google.maps
-  map: google.maps.Map
-  diff: ObjectDiff<Geopoint>
-  label?: string
+  api: typeof window.google.maps;
+  map: google.maps.Map;
+  diff: ObjectDiff<Geopoint>;
+  label?: string;
 }
 
-export function GeopointMove({diff, api, map, label}: Props) {
-  const {fromValue: from, toValue: to} = diff
-  const annotation = diff.isChanged ? diff.annotation : undefined
-  const userColor = useUserColor(annotation ? annotation.author : null) || undefined
-  const fromRef = React.useRef<google.maps.Marker>()
-  const toRef = React.useRef<google.maps.Marker>()
+export function GeopointMove({ diff, api, map, label }: Props) {
+  const { fromValue: from, toValue: to } = diff;
+  const annotation = diff.isChanged ? diff.annotation : undefined;
+  const userColor =
+    useUserColor(annotation ? annotation.author : null) || undefined;
+  const fromRef = React.useRef<google.maps.Marker>();
+  const toRef = React.useRef<google.maps.Marker>();
 
   return (
     <>
@@ -32,7 +33,16 @@ export function GeopointMove({diff, api, map, label}: Props) {
           color={userColor}
         />
       )}
-      {from && to && <Arrow api={api} map={map} from={from} to={to} zIndex={1} color={userColor} />}
+      {from && to && (
+        <Arrow
+          api={api}
+          map={map}
+          from={from}
+          to={to}
+          zIndex={1}
+          color={userColor}
+        />
+      )}
       {to && (
         <Marker
           api={api}
@@ -45,5 +55,5 @@ export function GeopointMove({diff, api, map, label}: Props) {
         />
       )}
     </>
-  )
+  );
 }
