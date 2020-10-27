@@ -2128,7 +2128,7 @@
     split2 "^3.2.2"
     throttle-debounce "^2.3.0"
 
-"@sanity/image-url@^0.140.15", "@sanity/image-url@^0.140.19":
+"@sanity/image-url@0.140.19", "@sanity/image-url@^0.140.15", "@sanity/image-url@^0.140.19":
   version "0.140.19"
   resolved "https://registry.yarnpkg.com/@sanity/image-url/-/image-url-0.140.19.tgz#6adfea7b7768a1708eba6bdcfe9eb0746d2bb1f9"
   integrity sha512-itPCTXNyF2MFdXMlwmpcXEiZU7AvSxyQpOaCQ3x8uODIl3GY22KAHYzz6rIGzWU63u0DN/Y8O1ChsblPLqnI5Q==
@@ -6398,12 +6398,13 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1, neo-async@^2.6.2:
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
 next-sanity@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/next-sanity/-/next-sanity-0.1.5.tgz#6323b81f42cf21bd2bde84cb798a113b9e6e169d"
-  integrity sha512-HiOg6hDnlszIB9P0UdLOqwQN7UjIwmtdqFq27B9cFomC8321kXGzWmJlfTD70tPHfcs3EpyOsS5LgaDPTtxI6w==
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/next-sanity/-/next-sanity-0.1.7.tgz#043fd29f04991177ff1a9644268dc4756e0da05e"
+  integrity sha512-J3T49yTCQrn+Mqjof9462YEq8Xb6oDr6XIBXjqSAYPCMDOMmA5GQ8x7GRSrp4/+CgzedQvTnvjAXd8JW1tMivA==
   dependencies:
+    "@sanity/block-content-to-react" "^2.0.7"
     "@sanity/groq-store" "^0.1.2"
-    "@sanity/image-url" "^0.140.19"
+    "@sanity/image-url" "0.140.19"
     groq "^2.0.1"
     picosanity "^2.1.2"
     use-deep-compare-effect "^1.4.0"
