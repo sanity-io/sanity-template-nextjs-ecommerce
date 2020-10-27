@@ -12,7 +12,7 @@ function IndexPage (props) {
     enabled: true
   })
   if (props?.errorCode) {
-    return <Error statusCode={errorCode} />
+    return <Error statusCode={props.errorCode} />
   }
   return (
       <div className="my-8">
@@ -119,11 +119,11 @@ function IndexPage (props) {
 }
 
 
-export async function getStaticProps({preview}) {
+export async function getStaticProps({preview = false}) {
   const productsData = await getClient(preview).fetch(query)
 
   return {
-    props: { productsData, errorCode: !productsData && 404 } // will be passed to the page component as props
+    props: { productsData: productsData || null, errorCode: !productsData && 404 } // will be passed to the page component as props
   }
 }
 
