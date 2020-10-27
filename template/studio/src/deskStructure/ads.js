@@ -3,7 +3,6 @@ import EyeIcon from "part:@sanity/base/eye-icon";
 import EditIcon from "part:@sanity/base/edit-icon";
 
 // IRL preview
-import NewyorkPreview from "../components/previews/banners/NewyorkPreview";
 import MagazinePreview from "../components/previews/banners/MagazinePreview";
 import OsakaPreview from "../components/previews/banners/OsakaPreview";
 
