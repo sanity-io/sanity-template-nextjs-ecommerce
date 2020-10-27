@@ -5,7 +5,7 @@
     "dataset": "nextjs-ecommerce"
   },
   "project": {
-    "name": "review-changes-launch-demo",
+    "name": "Next.js E-commerce",
     "basePath": "/studio"
   },
   "plugins": [
