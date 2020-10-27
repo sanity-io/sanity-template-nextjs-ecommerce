@@ -18,7 +18,13 @@ You need to set a token in your environment variables with read access to give t
 3. Add to your project’s environment variables on [vercel.com](https://vercel.com/docs/build-step#environment-variables)
 4. Use the key `SANITY_API_TOKEN=<your token>`
 
-Now you can addend `?preview` to the product pages and the products overview to enable preview mode when you are logged into your Sanity project.
+Now you can append `?preview` to the product pages and the products overview to enable preview mode when you are logged into your Sanity project. For example:
+
+`https://<your-url>.vercel.app/products/roji?preview`
+
+## Local development
+
+Run `sanity start` inside of the `/studio` and select the project you initated.
 
 ## Credits
 
