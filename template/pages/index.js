@@ -1,18 +1,18 @@
-import Error from "next/error";
-import { getClient, usePreviewSubscription } from "../utils/sanity";
-import ProductsPage from "../components/ProductsPage";
+import Error from 'next/error'
+import { getClient, usePreviewSubscription } from '../utils/sanity'
+import ProductsPage from '../components/ProductsPage'
 
 const query = `//groq
   *[_type == "product" && defined(slug.current)]
-`;
+`
 
 function IndexPage(props) {
   const { data: productsData } = usePreviewSubscription(query, {
     initialData: props?.productsData,
-    enabled: true,
-  });
+    enabled: props?.preview
+  })
   if (props?.errorCode) {
-    return <Error statusCode={props.errorCode} />;
+    return <Error statusCode={props?.errorCode} />
   }
   return (
     <div className="my-8">
@@ -115,19 +115,20 @@ function IndexPage(props) {
         <ProductsPage products={productsData} />
       </div>
     </div>
-  );
+  )
 }
 
 export async function getStaticProps({ params = {} }) {
-  const { preview = null } = params;
-  const productsData = await getClient(preview).fetch(query);
+  const { preview = null } = params
+  const productsData = await getClient(preview).fetch(query)
 
   return {
     props: {
       productsData: productsData || null,
       errorCode: !productsData && 404,
-    }, // will be passed to the page component as props
-  };
+      preview
+    } // will be passed to the page component as props
+  }
 }
 
-export default IndexPage;
+export default IndexPage
