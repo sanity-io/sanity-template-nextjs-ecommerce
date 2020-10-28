@@ -9,7 +9,7 @@ export default function ProductsPreview(props) {
   const url =
     process.env.NODE_ENV === 'production'
       ? `../../products/${displayed?.slug?.current}?preview`
-      : 'http://localhost:3000/products/${displayed?.slug?.current}?preview'
+      : `http://localhost:3000/products/${displayed?.slug?.current}?preview`
 
   return (
     <div className={styles.componentWrapper}>

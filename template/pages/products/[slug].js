@@ -1,19 +1,23 @@
 import Error from 'next/error'
-import ProductPage from '../../components/ProductPage'
 import { groq } from 'next-sanity'
+import { useRouter } from 'next/router'
+import ProductPage from '../../components/ProductPage'
 import { getClient, usePreviewSubscription } from '../../utils/sanity'
 
 const query = groq`*[_type == "product" && slug.current == $slug][0]`
 
-function ProductPageContainer(props) {
-  const { data: productData = {} } = usePreviewSubscription(query, {
-    params: { slug: props?.productData?.slug?.current },
-    initialData: props?.productData,
-    enabled: props?.preview
-  })
-  if (props?.errorCode) {
-    return <Error statusCode={props?.errorCode} />
+function ProductPageContainer({ productData, preview }) {
+  const router = useRouter()
+  if (!router.isFallback && !productData?.slug) {
+    return <Error statusCode={404} />
   }
+
+  const { data: product = {} } = usePreviewSubscription(query, {
+    params: { slug: productData?.slug?.current },
+    initialData: productData,
+    enabled: preview || router.query.preview !== null
+  })
+
   const {
     _id,
     title,
@@ -25,7 +29,7 @@ function ProductPageContainer(props) {
     vendor,
     categories,
     slug
-  } = productData
+  } = product
   return (
     <ProductPage
       id={_id}
@@ -42,24 +46,24 @@ function ProductPageContainer(props) {
   )
 }
 
-export async function getStaticPaths() {
-  const products = await getClient()
-    .fetch(`*[_type == "product" && defined(slug.current)]{
-    "params": {"slug": slug.current}
-  }`)
+export async function getStaticProps({ params, preview = false }) {
+  const productData = await getClient(preview).fetch(query, {
+    slug: params.slug
+  })
 
   return {
-    paths: products || null,
-    fallback: true
+    props: { preview, productData }
   }
 }
 
-export async function getStaticProps({ params = {} }) {
-  const { slug, preview = null } = params
-  const productData = await getClient(preview).fetch(query, { slug })
+export async function getStaticPaths() {
+  const paths = await getClient().fetch(
+    `*[_type == "product" && defined(slug.current)][].slug.current`
+  )
 
   return {
-    props: { preview, productData, errorCode: !productData && 404 } // will be passed to the page component as props
+    paths: paths.map(slug => ({ params: { slug } })),
+    fallback: true
   }
 }
 

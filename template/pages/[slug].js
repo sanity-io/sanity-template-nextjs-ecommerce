@@ -1,23 +1,36 @@
 import Error from 'next/error'
 import { groq } from 'next-sanity'
+import { useRouter } from 'next/router'
 import LandingPage from '../components/LandingPage'
 import { getClient, usePreviewSubscription } from '../utils/sanity'
 
 const query = groq`*[_type == "route" && slug.current == $slug][0]{
-  page->,
+  page->
 }`
 
-function ProductPageContainer(props) {
-  const { data: pageData = {} } = usePreviewSubscription(query, {
-    params: { slug: props?.pageData?.slug?.current },
-    initialData: props?.pageData,
-    enabled: props?.preview
-  })
-  if (props?.errorCode) {
-    return <Error statusCode={props?.errorCode} />
+function ProductPageContainer({ pageData, preview }) {
+  const router = useRouter()
+  if (!router.isFallback && !pageData?.slug?.current) {
+    return <Error statusCode={404} />
   }
 
-  return <LandingPage page={pageData.page} />
+  const { data: page = {} } = usePreviewSubscription(query, {
+    params: { slug: pageData?.slug?.current },
+    initialData: pageData,
+    enabled: preview || router.query.preview !== null
+  })
+
+  return <LandingPage page={page} />
+}
+
+export async function getStaticProps({ params = {}, preview = false }) {
+  const { page: pageData } = await getClient(preview).fetch(query, {
+    slug: params.slug
+  })
+
+  return {
+    props: { preview, pageData }
+  }
 }
 
 export async function getStaticPaths() {
@@ -28,15 +41,6 @@ export async function getStaticPaths() {
   return {
     paths: routes || null,
     fallback: true
-  }
-}
-
-export async function getStaticProps({ params = {} }) {
-  const { slug, preview = null } = params
-  const pageData = await getClient(preview).fetch(query, { slug })
-
-  return {
-    props: { preview, pageData, errorCode: !pageData && 404 } // will be passed to the page component as props
   }
 }
 

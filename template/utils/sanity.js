@@ -51,17 +51,11 @@ export const PortableText = createPortableTextComponent({
 export const sanityClient = createClient(config)
 // Set up a preview client with serverless authentication for drafts
 
-const token = process.env.SANITY_API_TOKEN
-if (!config.token) {
-  console.warn(
-    'You need to add SANITY_API_TOKEN to your environment for the preview to work'
-  )
-}
+
 
 export const previewClient = createClient({
   ...config,
   useCdn: false,
-  token
 })
 
 // Helper function for easily switching between normal client and preview client
