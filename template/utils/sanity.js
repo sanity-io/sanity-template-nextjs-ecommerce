@@ -16,6 +16,7 @@ const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   useCdn: process.env.NODE_ENV === "production",
+  token: process.env.SANITY_API_TOKEN
   /**
     * Set useCdn to `false` if your application require the freshest possible
     * data always (potentially slightly slower and a bit more expensive).
@@ -28,7 +29,9 @@ if (!config.projectId) {
 if (!config.dataset) {
   throw Error('The dataset name is not set. Check your environment variables.')
 }
-
+if (!config.token) {
+  console.warn('You need to add SANITY_API_TOKEN to your environment for the preview to work')
+}
 
 /**
  * Set up a helper function for generating Image URLs with only the asset reference data in your documents.
@@ -50,10 +53,11 @@ export const PortableText = createPortableTextComponent({
 // Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient(config);
 // Set up a preview client with serverless authentication for drafts
+
 export const previewClient = createClient({
   ...config,
   useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
+  token: config.token,
 });
 
 // Helper function for easily switching between normal client and preview client

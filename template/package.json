@@ -12,7 +12,7 @@
   "dependencies": {
     "@sanity/cli": "^2.0.5",
     "@sanity/image-url": "^0.140.19",
-    "next": "^9.5.5",
+    "next": "latest",
     "next-sanity": "^0.1.5",
     "react": "16.14.0",
     "react-dom": "16.14.0"
@@ -23,8 +23,8 @@
     "lerna": "^3.22.1",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.9.6",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "tailwindcss": "^1.9.6"
   },
   "keywords": [],
   "author": "Sanity.io <hello@sanity.io>",

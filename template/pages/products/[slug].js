@@ -12,7 +12,7 @@ function ProductPageContainer(props) {
     enabled: props?.preview,
   });
   if (props?.errorCode) {
-    return <Error statusCode={errorCode} />;
+    return <Error statusCode={props?.errorCode} />;
   }
   const {
     _id,
