@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import Cta from '../Cta'
-import {PortableText, urlFor} from '../../utils/sanity'
+import { PortableText, urlFor } from '../../utils/sanity'
 
 function ImageSection (props) {
-  const {heading, label, text, image, cta} = props
+  const { heading, label, text, image, cta } = props
 
   if (!image) {
     return null
@@ -25,11 +25,11 @@ function ImageSection (props) {
               />
               <figcaption>
                 <div>
-                    <div>{label}</div>
-                    <h2>{heading}</h2>
-                    {text && <PortableText blocks={text} />}
-                    {cta && cta.route && <Cta {...cta} />}
-                  </div>
+                  <div>{label}</div>
+                  <h2>{heading}</h2>
+                  {text && <PortableText blocks={text} />}
+                  {cta && cta.route && <Cta {...cta} />}
+                </div>
               </figcaption>
             </figure>
           </div>

@@ -1,7 +1,7 @@
-import {PortableText} from '../../utils/sanity'
+import { PortableText } from '../../utils/sanity'
 
-function TextSection(props) {
-  const {text} = props
+function TextSection (props) {
+  const { text } = props
   return (
     <div>
       <div className="container mx-auto px-6">
