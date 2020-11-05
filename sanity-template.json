@@ -24,6 +24,10 @@
     "studio": {
       "basePath": "/studio"
     },
+    "envVars": {
+      "projectId": ["NEXT_PUBLIC_SANITY_PROJECT_ID"],
+      "dataset": ["NEXT_PUBLIC_SANITY_DATASET"]
+    },
     "corsOrigins": [
       {
         "origin": "http://localhost:3000",
