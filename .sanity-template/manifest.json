@@ -4,7 +4,7 @@
   "description": "Sanity E-commerce example with Next.js frontend, deployed to Vercel.",
   "previewMedia": {
     "type": "image",
-    "src": "assets/preview.png",
+    "src": ".sanity-template/screenshot.png",
     "alt": "Frontend"
   },
   "technologies": [
