@@ -1,4 +1,4 @@
-import { urlFor, PortableText, getClient } from "../utils/sanity";
+import { PortableText, urlFor } from "../utils/sanity";
 
 function ProductPage(props) {
   const { title, defaultProductVariant, mainImage, body } = props;

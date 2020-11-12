@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types'
-import Cta from '../Cta'
-import { PortableText, urlFor } from '../../utils/sanity'
+import PropTypes from "prop-types";
+import Cta from "../Cta";
+import { PortableText, urlFor } from "../../utils/sanity";
 
-function Hero (props) {
-  const { heading, backgroundImage, tagline, ctas } = props
+function Hero(props) {
+  const { heading, backgroundImage, tagline, ctas } = props;
 
   return (
     <div>
@@ -13,16 +13,20 @@ function Hero (props) {
             <h3 className="text-gray-700 uppercase text-lg">{heading}</h3>
             {tagline && <PortableText blocks={tagline} />}
             {ctas && (
-              <div>{ctas.map(cta => <Cta {...cta} key={cta._key} />)}</div>
+              <div>
+                {ctas.map((cta) => (
+                  <Cta {...cta} key={cta._key} />
+                ))}
+              </div>
             )}
           </div>
           <div className="w-full h-64 md:w-1/2 lg:h-96">
             <img
               className="h-full w-full rounded-md object-cover max-w-lg mx-auto"
               src={urlFor(backgroundImage)
-                .auto('format')
+                .auto("format")
                 .width(1051)
-                .fit('crop')
+                .fit("crop")
                 .quality(80)}
               alt={backgroundImage.alt}
             />
@@ -30,14 +34,14 @@ function Hero (props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 Hero.propTypes = {
   heading: PropTypes.string,
   backgroundImage: PropTypes.object,
   tagline: PropTypes.array,
-  ctas: PropTypes.arrayOf(PropTypes.object)
-}
+  ctas: PropTypes.arrayOf(PropTypes.object),
+};
 
-export default Hero
+export default Hero;

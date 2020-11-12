@@ -5,7 +5,7 @@
     "dataset": "placeholder"
   },
   "project": {
-    "name": "review-changes-launch-demo",
+    "name": "Next.JS E-commerce example",
     "basePath": "/studio"
   },
   "plugins": [
