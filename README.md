@@ -20,6 +20,17 @@ You can append `?preview` to the landing pages, product pages and the products o
 
 You can find the code for the in-studio preview over in `/studio/src/components/product`.
 
+## Running Locally
+
+To run locally, rename `.env.test` to `.env` and add your project ID from [manage.sanity.io](https://manage.sanity.io). 
+
+```bash
+# Runs the frontend at localhost:3000
+npm start
+
+# Runs the Studio at localhost:3333
+npm run start:sanity
+```
 
 ## Credits
 
