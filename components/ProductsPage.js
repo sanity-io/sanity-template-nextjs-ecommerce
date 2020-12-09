@@ -3,11 +3,6 @@ import { useState } from "react";
 import ProductCard from "./ProductCard";
 
 function ProductsPage({ products }) {
-  const [cartOpen, setCartOpen] = useState(false);
-  const [isOpen, setOpen] = useState(false);
-  const handleCart = () => setCartOpen(!cartOpen);
-  const handleOpen = () => setOpen(!open);
-
   return (
     <div className="container mx-auto px-6">
       <h3 className="text-gray-700 text-2xl font-medium">Juices</h3>

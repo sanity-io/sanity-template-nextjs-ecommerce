@@ -1,12 +1,11 @@
-import { useState } from 'react'
-import Link from 'next/link'
-import Cart from './Cart'
+import { useState } from "react";
+import Link from "next/link";
 
-function Layout ({ children }) {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [cartOpen, setCartOpen] = useState(false)
-  const handleMenu = () => setMenuOpen(!menuOpen)
-  const handleOpen = () => setCartOpen(!cartOpen)
+function Layout({ children }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const handleMenu = () => setMenuOpen(!menuOpen);
+  const handleOpen = () => setCartOpen(!cartOpen);
   return (
     <div className="bg-white">
       <header>
@@ -74,7 +73,7 @@ function Layout ({ children }) {
           </div>
           <nav
             className={`${
-              menuOpen ? '' : 'hidden'
+              menuOpen ? "" : "hidden"
             } sm:flex sm:justify-center sm:items-center mt-4`}
           >
             <div className="flex flex-col sm:flex-row">
@@ -137,7 +136,7 @@ function Layout ({ children }) {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

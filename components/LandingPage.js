@@ -1,9 +1,8 @@
-import { PortableText } from '../utils/sanity'
-import RenderSections from './RenderSections'
+import RenderSections from "./RenderSections";
 
-function LandingPage ({ page = {} }) {
-  const { title, content = [] } = page
-  return <RenderSections sections={content} />
+function LandingPage({ page = {} }) {
+  const { content = [] } = page;
+  return <RenderSections sections={content} />;
 }
 
-export default LandingPage
+export default LandingPage;

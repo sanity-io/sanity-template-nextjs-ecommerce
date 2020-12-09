@@ -1,18 +1,7 @@
-import Link from 'next/link'
-import { urlFor } from '../utils/sanity'
+import Link from "next/link";
+import { urlFor } from "../utils/sanity";
 
-function ProductCard ({
-  _id,
-  title,
-  mainImage,
-  blurb,
-  body,
-  tags,
-  vendor,
-  categories,
-  slug,
-  defaultProductVariant
-}) {
+function ProductCard({ _id, title, mainImage, slug, defaultProductVariant }) {
   return (
     <Link href={`/products/${slug.current}`}>
       <a className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
@@ -20,10 +9,10 @@ function ProductCard ({
           className="flex items-end justify-end h-56 w-full bg-cover"
           style={{
             backgroundImage: `url('${urlFor(mainImage)
-              .auto('format')
-              .fit('crop')
+              .auto("format")
+              .fit("crop")
               .width(750)
-              .quality(80)}`
+              .quality(80)}`,
           }}
         >
           <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
@@ -48,7 +37,7 @@ function ProductCard ({
         </div>
       </a>
     </Link>
-  )
+  );
 }
 
-export default ProductCard
+export default ProductCard;
