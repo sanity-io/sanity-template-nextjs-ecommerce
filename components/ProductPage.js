@@ -1,6 +1,9 @@
-import { PortableText, urlFor } from "../utils/sanity";
+import {useState} from 'react'
+import { urlFor, PortableText, getClient } from "../utils/sanity";
 
 function ProductPage(props) {
+  const [count, setCount] = useState(1)
+  const handleCount = (value) => !(count === 0 && value === -1) ? setCount(count + value) : count
   const { title, defaultProductVariant, mainImage, body } = props;
   return (
     <div className="container mx-auto px-6">
@@ -13,7 +16,7 @@ function ProductPage(props) {
               .width(1051)
               .fit("crop")
               .quality(80)}
-            alt="Nike Air"
+            alt={mainImage?.alt || `Photo of ${title}`}
           />
         </div>
         <div className="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
@@ -27,7 +30,7 @@ function ProductPage(props) {
               Count:
             </label>
             <div className="flex items-center mt-1">
-              <button className="text-gray-500 focus:outline-none focus:text-gray-600">
+              <button onClick={() => handleCount(1)}className="text-gray-500 focus:outline-none focus:text-gray-600">
                 <svg
                   className="h-5 w-5"
                   fill="none"
@@ -40,8 +43,8 @@ function ProductPage(props) {
                   <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </button>
-              <span className="text-gray-700 text-lg mx-2">20</span>
-              <button className="text-gray-500 focus:outline-none focus:text-gray-600">
+              <span className="text-gray-700 text-lg mx-2">{count}</span>
+              <button onClick={() => handleCount(-1)} className="text-gray-500 focus:outline-none focus:text-gray-600">
                 <svg
                   className="h-5 w-5"
                   fill="none"
@@ -54,16 +57,6 @@ function ProductPage(props) {
                   <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </button>
-            </div>
-          </div>
-          <div className="mt-3">
-            <label className="text-gray-700 text-sm" htmlFor="count">
-              Color:
-            </label>
-            <div className="flex items-center mt-1">
-              <button className="h-5 w-5 rounded-full bg-blue-600 border-2 border-blue-200 mr-2 focus:outline-none" />
-              <button className="h-5 w-5 rounded-full bg-teal-600 mr-2 focus:outline-none" />
-              <button className="h-5 w-5 rounded-full bg-pink-600 mr-2 focus:outline-none" />
             </div>
           </div>
           <div className="flex items-center mt-6">

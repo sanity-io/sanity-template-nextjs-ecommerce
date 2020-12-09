@@ -32,7 +32,7 @@ function ProductCard({ _id, title, mainImage, slug, defaultProductVariant }) {
         <div className="px-5 py-3">
           <h3 className="text-gray-700 uppercase">{title}</h3>
           <span className="text-gray-500 mt-2">
-            ${defaultProductVariant.price}
+            ${defaultProductVariant?.price}
           </span>
         </div>
       </a>

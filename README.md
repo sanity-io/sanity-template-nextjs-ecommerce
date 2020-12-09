@@ -12,6 +12,9 @@ This starter uses the [Next.js toolkit for Sanity.io](https://github.com/sanity-
 
 This starter comes with an intentionally sparse frontend for just products and super simple landing pages. The fun is building and tweaking it yourself?
 
+## Getting started
+The quickest way to get up and running is to go to https://www.sanity.io/create?template=sanity-io%2Fsanity-template-nextjs-ecommerce and create a new project by following the instructions there.
+
 ## Enabling live preview
 
 You can append `?preview` to the landing pages, product pages and the products overview to enable preview mode when you are logged into your Sanity project. For example:
@@ -24,13 +27,15 @@ You can find the code for the in-studio preview over in `/studio/src/components/
 
 To run locally, rename `.env.test` to `.env` and add your project ID from [manage.sanity.io](https://manage.sanity.io). 
 
-```bash
-# Runs the frontend at localhost:3000
-npm start
+If you have already set up deployments on Vercel, you can also do `vercel env pull` to copy environment variables to your development environment.
 
-# Runs the Studio at localhost:3333
-npm run start:sanity
+NOTE: If your Vercel project is set up to use the Next.js framework preset, you'll have to go to the project settings under https://vercel.com and under Build & Develpment change the _development command_ to: `npm run dev`
+
+To start the development server:
+```bash
+npm start
 ```
+This will run the frontend at http://localhost:3000 and the Sanity Studio at http://localhost:3000/studio
 
 ## Credits
 
