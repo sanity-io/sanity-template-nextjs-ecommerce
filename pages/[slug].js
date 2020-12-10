@@ -14,7 +14,7 @@ function ProductPageContainer ({ pageData, preview, slug }) {
     return <Error statusCode={404} />
   }
 
-  const { data: { page } } = usePreviewSubscription(query, {
+  const { data: { page = {} } = {} } =  usePreviewSubscription(query, {
     params: { slug },
     initialData: pageData,
     enabled: preview || router.query.preview !== null
