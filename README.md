@@ -4,6 +4,8 @@ This is an e-commerce *starter* that features a studio with a simple Next.js fro
 
 This starter uses the [Next.js toolkit for Sanity.io](https://github.com/sanity-io/next-sanity).
 
+Note: This starter is an example of e-commerce content models and layout. It doesn't come with a full cart and fulfilmment solution. If you're interested in how to integrate Sanity with a e-commerce solution, do [join our community](https://slack.sanity.io).
+
 **Features:**
 
 * Live previews, including website preview for products
@@ -13,6 +15,7 @@ This starter uses the [Next.js toolkit for Sanity.io](https://github.com/sanity-
 This starter comes with an intentionally sparse frontend for just products and super simple landing pages. The fun is building and tweaking it yourself?
 
 ## Getting started
+
 The quickest way to get up and running is to go to https://www.sanity.io/create?template=sanity-io%2Fsanity-template-nextjs-ecommerce and create a new project by following the instructions there.
 
 ## Enabling live preview
@@ -25,7 +28,7 @@ You can find the code for the in-studio preview over in `/studio/src/components/
 
 ## Running Locally
 
-To run locally, rename `.env.test` to `.env` and add your project ID from [manage.sanity.io](https://manage.sanity.io). 
+To run locally, rename `.env.test` to `.env` and add your project ID from [manage.sanity.io](https://manage.sanity.io).
 
 If you have already set up deployments on Vercel, you can also do `vercel env pull` to copy environment variables to your development environment.
 
