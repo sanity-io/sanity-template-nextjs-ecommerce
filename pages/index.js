@@ -10,7 +10,7 @@ const query = `//groq
 function IndexPage(props) {
   const { productsData, preview } = props;
   const router = useRouter();
-  console.log(props);
+
   if (!router.isFallback && !productsData) {
     return <Error statusCode={404} />;
   }

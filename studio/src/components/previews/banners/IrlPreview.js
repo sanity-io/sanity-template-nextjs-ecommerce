@@ -134,7 +134,7 @@ class IrlPreview extends React.PureComponent {
 
     // const hasSize = width > 0 && height > 0
     // TODO: Show loading-indicator before we have size?
-    console.log(JSON.stringify(nmatrix));
+    // console.log(JSON.stringify(nmatrix));
     // Convert to pixel-space.
     const matrix = nmatrix.slice();
     scaleMatrix(matrix, 1 / width, 1 / height);
