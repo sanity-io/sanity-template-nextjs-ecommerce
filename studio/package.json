@@ -1,7 +1,7 @@
 {
   "name": "sanity-nextjs-ecommerce-studio",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "package.json",
   "author": "Knut Melvær <knut@sanity.io>",
@@ -24,8 +24,8 @@
     "@sanity/desk-tool": "^2.3.2",
     "@sanity/vision": "^2.2.6",
     "prop-types": "^15.7",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-icons": "^3.11.0",
     "react-moveable": "^0.22.6",
     "resize-observer": "^1.0.0"
